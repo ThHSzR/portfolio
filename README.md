@@ -1,4 +1,4 @@
-# Portfólio — Thiago Rodrigues
+# Portfólio — Thiago Souza
 
 Portfólio profissional estático de Thiago Henrique Souza Rodrigues, com foco em
 infraestrutura de TI, redes, suporte corporativo, cloud e segurança da informação.
@@ -7,7 +7,7 @@ infraestrutura de TI, redes, suporte corporativo, cloud e segurança da informa�
 
 - HTML5 semântico
 - CSS3 responsivo
-- Zero JavaScript, PHP ou dependências externas
+- HTML e CSS próprios, com o script oficial do badge do LinkedIn
 - Compatível com hospedagem compartilhada e cPanel
 
 ## Publicação
