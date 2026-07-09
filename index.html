@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfólio de Thiago Henrique Souza Rodrigues, profissional de infraestrutura de TI, redes e suporte corporativo.">
+  <meta name="description" content="Portfólio de Thiago Henrique Souza Rodrigues, Engenheiro de Computação com foco em infraestrutura de TI, redes, cloud, suporte corporativo e segurança da informação.">
   <meta name="theme-color" content="#080b12">
-  <title>Thiago Souza — Infraestrutura de TI</title>
+  <title>Thiago Souza — Engenheiro de Computação</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/profile-photo.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -19,12 +20,16 @@
         <span class="brand__text">Thiago Souza</span>
       </a>
       <nav class="nav__links" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
         <a href="#sobre">Sobre</a>
         <a href="#consultoria">Consultoria</a>
         <a href="#experiencia">Experiência</a>
-        <a href="#competencias">Competências</a>
+        <a href="#competencias">Skills</a>
+        <a href="#formacao">Formação</a>
+        <a href="#contato">Contato</a>
       </nav>
-      <a class="button button--small" href="mailto:thiago@thsouza.eng.br">Vamos conversar</a>
+      <a class="button button--small nav__cta" href="#contato" aria-label="Fale comigo">Fale comigo</a>
+      
     </div>
   </header>
 
@@ -33,12 +38,15 @@
       <div class="hero__glow" aria-hidden="true"></div>
       <div class="container hero__grid">
         <div class="hero__content">
-          <p class="eyebrow"><span></span> Infraestrutura que mantém negócios em movimento</p>
+          <p class="eyebrow"><span></span> Engenharia de Computação aplicada à infraestrutura</p>
           <h1>Thiago Henrique<br><strong>Souza Rodrigues.</strong></h1>
-          <p class="hero__lead">Analista de Infraestrutura de TI especializado em redes, Active Directory, Microsoft 365 e suporte corporativo.</p>
+          <p class="hero__lead">Engenheiro de Computação com foco em infraestrutura de TI, redes corporativas, Active Directory, Microsoft 365, cloud e suporte técnico.</p>
           <div class="hero__actions">
             <a class="button" href="#experiencia">Conheça minha trajetória <span aria-hidden="true">↓</span></a>
-            <a class="button button--ghost" href="https://www.linkedin.com/in/thhszr" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a class="button button--outline-light" href="https://www.linkedin.com/in/thhszr" target="_blank" rel="noopener noreferrer">
+            <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.04H3.54V8.98H7.1v11.47Z"/></svg>
+            LinkedIn
+          </a>
           </div>
           <dl class="hero__stats" aria-label="Destaques profissionais">
             <div><dt>250+</dt><dd>usuários atendidos</dd></div>
@@ -51,16 +59,16 @@
           <div class="profile-card__visual">
             <div class="profile-card__orbit" aria-hidden="true"></div>
             <div class="avatar">
-              <img src="assets/profile-photo.png" alt="Foto de Thiago Henrique Souza Rodrigues" width="941" height="941">
+              <img src="assets/profile-photo.webp" alt="Foto de Thiago Henrique Souza Rodrigues" width="512" height="512" decoding="async" fetchpriority="high">
             </div>
             <span class="profile-card__status">Disponível para oportunidades</span>
           </div>
           <div class="profile-card__body">
-            <p class="profile-card__label">Localização</p>
-            <p>Goiânia, Goiás, Brasil</p>
+            <p class="profile-card__label">Local de Trabalho</p>
+            <p>Presencial - Goiânia, Goiás · Home Office - Brasil</p>
             <div class="profile-card__line"></div>
             <p class="profile-card__label">Áreas de interesse</p>
-            <p>Infraestrutura · Redes · Cloud · Segurança da Informação</p>
+          <p>Engenharia de Computação · Infraestrutura · Redes · Suporte · Segurança da Informação</p>
           </div>
         </aside>
       </div>
@@ -70,11 +78,11 @@
       <div class="container section__split">
         <div>
           <p class="section-kicker">01 / Sobre mim</p>
-          <h2>Tecnologia com propósito, <span>disponibilidade e segurança.</span></h2>
+          <h2>Engenharia com propósito, <span>disponibilidade e segurança.</span></h2>
         </div>
         <div class="about-copy">
-          <p>Sou profissional de Tecnologia da Informação com foco em infraestrutura, suporte técnico e administração de redes corporativas. Desenvolvi experiência em ambientes de missão crítica, atuando com Active Directory, Microsoft 365, Windows Server, Linux e serviços de rede.</p>
-          <p>Gosto de resolver problemas complexos, documentar soluções e otimizar processos. Busco combinar uma operação confiável com melhoria contínua — da experiência do usuário à sustentação do ambiente.</p>
+          <p>Sou Engenheiro de Computação com atuação direcionada à infraestrutura de TI, suporte técnico e administração de redes corporativas. Desenvolvi experiência em ambientes de missão crítica, atuando com Active Directory, Microsoft 365, Windows Server, Linux e serviços de rede.</p>
+          <p>Uso a base da engenharia para resolver problemas complexos, documentar soluções e otimizar processos. Busco combinar uma operação confiável com melhoria contínua — da experiência do usuário à sustentação do ambiente.</p>
           <div class="principle">
             <span aria-hidden="true">✦</span>
             <p><strong>Meu princípio de trabalho</strong>Tecnologia deve gerar eficiência para as pessoas e segurança para o negócio.</p>
@@ -111,14 +119,14 @@
     <section class="section section--panel" id="experiencia">
       <div class="container">
         <div class="section__heading">
-          <div><p class="section-kicker">03 / Experiência profissional</p><h2>Infraestrutura a serviço do <span>Estado de Goiás.</span></h2></div>
-          <p>Uma atuação de impacto em ambiente governamental, unindo suporte, redes e continuidade operacional.</p>
+          <div><p class="section-kicker">03 / Experiência profissional</p><h2>Engenharia aplicada à <span>infraestrutura corporativa.</span></h2></div>
+          <p>Uma atuação de impacto em ambiente governamental, unindo suporte, redes, continuidade operacional e visão sistêmica de engenharia.</p>
         </div>
 
         <div class="timeline">
           <article class="timeline__item timeline__item--featured">
             <div class="timeline__meta">
-              <img class="company-emblem" src="assets/goias-emblem.png" alt="Brasão do Estado de Goiás" width="640" height="640">
+              <img class="company-emblem" src="assets/goias-emblem.webp" alt="Brasão do Estado de Goiás" width="320" height="320" loading="lazy" decoding="async">
               <span>ago 2024 — jul 2026</span>
               <strong class="company-name">Estado de Goiás</strong>
               <span>Secretaria de Estado de Esporte e Lazer</span>
@@ -129,7 +137,7 @@
               <p>Participei da implantação do parque tecnológico da nova sede no Estádio Olímpico e atuei no suporte N1/N2, sustentação de redes LAN, WAN e Wi‑Fi, gestão de chamados e administração de acessos e políticas.</p>
               <ul class="impact-list">
                 <li>Administração de Active Directory, GPO e Microsoft 365.</li>
-                <li>Redes com MikroTik, Ruckus R650, TCP/IP, DNS, DHCP Relay e VPN.</li>
+                <li>Redes com MikroTik, Ruckus, TCP/IP, DNS, DHCP Relay e VPN.</li>
                 <li>GLPI, inventário, documentação técnica, SLA e segurança da informação.</li>
                 <li>Suporte a ambientes administrativos, esportivos e eventos de grande porte.</li>
               </ul>
@@ -137,9 +145,12 @@
             </div>
           </article>
           <aside class="experience-note" aria-label="Experiência administrativa complementar">
-            <span class="experience-note__label">Bagagem complementar</span>
-            <div>
-              <h3>Experiência administrativa como Aprendiz</h3>
+            <div class="experience-note__header">
+              <span class="experience-note__label">Bagagem complementar</span>
+              <p class="experience-note__subtitle">Jovem aprendiz em comércio</p>
+            </div>
+            <div class="experience-note__content">
+              <h3>Experiência administrativa</h3>
               <p>Controle de documentos físicos e digitais, atendimento, preenchimento de formulários, atualização de cadastros e suporte às rotinas do escritório — uma base sólida de comunicação e organização que levo para a TI.</p>
             </div>
           </aside>
@@ -152,7 +163,7 @@
       <div class="container">
         <div class="section__heading">
           <div><p class="section-kicker">04 / Competências</p><h2>Conhecimento que vira <span>solução.</span></h2></div>
-          <p>Competências construídas na operação, certificações profissionais e formação em Engenharia de Computação.</p>
+          <p>Competências construídas na prática de infraestrutura, certificações profissionais e formação em Engenharia de Computação.</p>
         </div>
         <div class="skills-grid">
           <article class="skill-card">
@@ -194,7 +205,7 @@
         <div class="linkedin-window__copy">
           <p class="section-kicker">Presença online</p>
           <h2>Experiência e projetos, <span>em um só lugar.</span></h2>
-          <p>No LinkedIn compartilho minha trajetória profissional. No GitHub mantenho alguns projetos pessoais e acadêmicos desenvolvidos ao longo da graduação.</p>
+          <p>No LinkedIn compartilho minha trajetória profissional em engenharia e infraestrutura. No GitHub mantenho projetos pessoais e acadêmicos desenvolvidos ao longo da formação.</p>
         </div>
         <div class="social-profiles">
           <a class="social-profile" href="https://www.linkedin.com/in/thhszr" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil de Thiago Souza no LinkedIn">
@@ -232,31 +243,31 @@
         <div>
           <p class="section-kicker">05 / Formação</p>
           <h2>Base técnica.<br><span>Visão de futuro.</span></h2>
-          <p class="education-grid__intro">Engenharia de Computação integra software, hardware, redes, automação e resolução estruturada de problemas.</p>
+          <p class="education-grid__intro">Engenharia de Computação integra software, hardware, redes, automação e resolução estruturada de problemas aplicados à infraestrutura.</p>
         </div>
         <div class="credentials">
           <article class="credential credential--featured">
             <span class="credential__institution-logo">
-              <img src="assets/puc-goias-emblem.png" alt="Brasão da PUC Goiás" width="640" height="640">
+              <img src="assets/puc-goias-emblem.webp" alt="Brasão da PUC Goiás" width="240" height="240" loading="lazy" decoding="async">
             </span>
             <div>
               <p class="tag">Graduação · 2023 — 2027</p>
               <h3>Engenharia de Computação</h3>
               <p class="credential__institution">Pontifícia Universidade Católica de Goiás</p>
               <div class="education-grid__description">
-                <p>Bacharelando em Engenharia de Computação pela PUC Goiás, com formação sólida em computação, matemática e eletrônica, voltada ao desenvolvimento de soluções que integram hardware e software.</p>
+                <p>Engenheiro de Computação pela PUC Goiás, com formação sólida em computação, matemática e eletrônica, voltada ao desenvolvimento de soluções que integram hardware, software e infraestrutura.</p>
                 <p>Ao longo do curso, desenvolvo competências em programação, estrutura e análise de algoritmos, engenharia de software, bancos de dados, redes de computadores, sistemas operacionais, inteligência artificial, criptografia, sistemas distribuídos e computação científica, além de uma base consistente em circuitos elétricos, eletrônica, microcontroladores, sistemas embarcados, automação e robótica.</p>
-                <p>A formação prática é reforçada por laboratórios especializados e projetos integradores, preparando para atuar em áreas como sistemas embarcados, automação, engenharia de software, infraestrutura e redes, e desenvolvimento de soluções computacionais aplicadas a diferentes setores.</p>
+                <p>A formação prática é reforçada por laboratórios especializados e projetos integradores, preparando para atuar em áreas como infraestrutura e redes, cloud, segurança da informação, sistemas embarcados, automação, engenharia de software e soluções computacionais aplicadas a diferentes setores.</p>
               </div>
             </div>
           </article>
           <a class="credential credential--linked" href="https://coursera.org/share/28394d2782f6831466b0a0df16f74ff6" target="_blank" rel="noopener noreferrer" aria-label="Ver credencial Google IT Support na Coursera">
-            <span class="credential__icon"><img src="assets/google-g.svg" alt="" width="44" height="44"></span>
+            <span class="credential__icon"><img src="assets/google-g.svg" alt="" width="44" height="44" loading="lazy" decoding="async"></span>
             <div><p class="tag">Certificação profissional</p><h3>Google IT Support</h3><p>Suporte, sistemas, redes e administração de TI.</p></div>
             <span class="credential__link">Ver credencial <span aria-hidden="true">↗</span></span>
           </a>
           <a class="credential credential--linked" href="https://coursera.org/share/0f369d0330e9fef843d6b94c82381c27" target="_blank" rel="noopener noreferrer" aria-label="Ver credencial Google Cybersecurity na Coursera">
-            <span class="credential__icon"><img src="assets/google-g.svg" alt="" width="44" height="44"></span>
+            <span class="credential__icon"><img src="assets/google-g.svg" alt="" width="44" height="44" loading="lazy" decoding="async"></span>
             <div><p class="tag">Certificação profissional</p><h3>Google Cybersecurity</h3><p>Fundamentos de segurança e proteção de ambientes.</p></div>
             <span class="credential__link">Ver credencial <span aria-hidden="true">↗</span></span>
           </a>
@@ -292,7 +303,7 @@
       <div class="container contact__inner">
         <p class="section-kicker">Vamos conversar</p>
         <h2>Seu próximo desafio de TI<br>pode começar <span>por aqui.</span></h2>
-        <p>Estou aberto a oportunidades em Infraestrutura de TI, Redes, Suporte Corporativo, Cloud e Segurança da Informação.</p>
+        <p>Estou aberto a oportunidades como Engenheiro de Computação com foco em Infraestrutura de TI, Redes, Suporte Corporativo, Cloud e Segurança da Informação.</p>
         <div class="contact__actions">
           <a class="button button--contact-primary" href="mailto:thiago@thsouza.eng.br">
             <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>

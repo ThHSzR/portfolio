@@ -1,7 +1,8 @@
 # Portfólio — Thiago Souza
 
-Portfólio profissional estático de Thiago Henrique Souza Rodrigues, com foco em
-infraestrutura de TI, redes, suporte corporativo, cloud e segurança da informação.
+Portfólio profissional estático de Thiago Henrique Souza Rodrigues, Engenheiro de
+Computação com foco em infraestrutura de TI, redes, suporte corporativo, cloud e
+segurança da informação.
 
 ## Tecnologias
 
