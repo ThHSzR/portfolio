@@ -7,7 +7,7 @@ infraestrutura de TI, redes, suporte corporativo, cloud e segurança da informa�
 
 - HTML5 semântico
 - CSS3 responsivo
-- HTML e CSS próprios, com o script oficial do badge do LinkedIn
+- Zero JavaScript, PHP, banco de dados ou processo de compilação
 - Compatível com hospedagem compartilhada e cPanel
 
 ## Publicação
