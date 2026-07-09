@@ -289,8 +289,8 @@ h1 {
 .platform-card--rockstar { --brand: #f9b928; }
 .platform-card--playstation { --brand: #0070cc; }
 .platform-card--x { --brand: #f6f7fb; }
-.platform-card--instagram { --brand: #e4405f; }
-.platform-card--youtube { --brand: #ff0033; }
+.platform-card--instagram { --brand: #ff0077; }
+.platform-card--youtube { --brand: #bdbdbd; }
 
 @media (max-width: 720px) {
   .page-shell {
