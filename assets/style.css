@@ -339,11 +339,11 @@ h1 strong {
   background: var(--blue);
   box-shadow: 0 0 14px rgba(0,124,255,.8);
 }
-.profile-card__orbit::before { width: 8px; height: 8px; left: 28px; top: 24px; }
+.profile-card__orbit::before { width: 10px; height: 10px; left: 34px; top: 24px; }
 .profile-card__orbit::after {
-  width: 5px;
-  height: 5px;
-  right: 12px;
+  width: 10px;
+  height: 10px;
+  right: 6px;
   bottom: 58px;
   background: var(--green);
 }
@@ -544,13 +544,15 @@ h1 strong {
   font-family: Consolas, ui-monospace, monospace;
 }
 .company-emblem { width: 150px; height: 150px; margin: -18px 0 24px; border: 1px solid rgba(255,255,255,.08); border-radius: 24px; object-fit: cover; object-position: center; box-shadow: 0 18px 45px rgba(0,0,0,.28); }
-.company-emblem--ocb {
+.company-emblem.company-emblem--ocb {
   width: min(100%, 230px);
   height: auto;
-  padding: 18px;
+  padding: 20px;
   object-fit: contain;
-  border-color: rgba(0,124,255,.24);
-  background: rgba(255,255,255,.96);
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
 }
 
 .company-name {
@@ -753,32 +755,38 @@ h1 strong {
 .credential { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 16px; padding: 26px 0; border-bottom: 1px solid var(--line); }
 .credential--linked {
   align-items: start;
+  padding: 24px 22px;
   border-radius: var(--radius);
-  transition: color .22s ease, padding .22s ease, background .22s ease, transform .22s ease, box-shadow .22s ease;
+  transition: color .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.credential--linked > * {
+  transform-origin: left center;
+  transition: transform .2s ease;
 }
 .credential--linked:hover,
 .credential--linked:focus-visible {
   color: white;
-  background: rgba(0,124,255,.055);
-  box-shadow: 0 14px 30px rgba(0,124,255,.08);
-  transform: translateY(-3px);
+  background: rgba(0,124,255,.045);
+  box-shadow: inset 3px 0 0 rgba(0,124,255,.72);
 }
+.credential--linked:hover > *,
+.credential--linked:focus-visible > * { transform: scale(.985); }
 .credential h3 { margin-bottom: 4px; font-size: 1.18rem; overflow-wrap: anywhere; }
 .credential > div > p:last-child { margin-bottom: 0; color: var(--muted); }
 .credential__year { color: var(--blue); font-family: Consolas, monospace; font-size: .72rem; }
 .credential__institution { margin-bottom: 20px; color: var(--muted); }
 .credential__institution-logo { width: 54px; height: 54px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #0c478d; }
 .credential__institution-logo img { width: 100%; height: 100%; object-fit: cover; }
-.credential__icon { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: white; transition: transform .22s ease, box-shadow .22s ease; }
-.credential__icon img { width: 30px; height: 30px; transition: transform .22s ease; }
+.credential__icon { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: white; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.credential__icon img { width: 30px; height: 30px; }
 .credential--linked:hover .credential__icon,
 .credential--linked:focus-visible .credential__icon {
-  transform: scale(1.04);
-  box-shadow: 0 10px 24px rgba(0,124,255,.14);
+  border-color: rgba(0,124,255,.34);
+  box-shadow: 0 0 0 3px rgba(0,124,255,.08);
 }
-.credential--linked:hover .credential__icon img,
-.credential--linked:focus-visible .credential__icon img { transform: rotate(-4deg) scale(1.06); }
-.credential__link { grid-column: 2; color: var(--blue); font-size: .72rem; font-weight: 750; white-space: normal; }
+.credential__link { grid-column: 2; color: var(--blue); font-size: .72rem; font-weight: 750; white-space: normal; transition: color .2s ease; }
+.credential--linked:hover .credential__link,
+.credential--linked:focus-visible .credential__link { color: #93c5fd; }
 
 .achievement { align-items: center; }
 .achievement__badge {
@@ -999,7 +1007,7 @@ h1 strong {
     padding: 46px;
   }
   .credential { grid-template-columns: 100px 1fr; gap: 22px; }
-  .credential--linked { grid-template-columns: 100px 1fr auto; align-items: center; }
+  .credential--linked { grid-template-columns: 100px 1fr auto; align-items: center; padding: 28px 30px; }
   .credential__institution-logo { width: 78px; height: 78px; border-radius: 18px; }
   .credential__link { grid-column: auto; white-space: nowrap; }
   .achievement {
