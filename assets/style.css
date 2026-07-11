@@ -16,6 +16,7 @@
   --header: 112px;
   --grid-opacity: .035;
   --timeline-gap: 36px;
+  --section-fade: linear-gradient(90deg, transparent, rgba(0,124,255,.18), rgba(255,255,255,.08), transparent);
 }
 
 * { box-sizing: border-box; }
@@ -418,7 +419,22 @@ h1 strong {
 }
 
 .section {
+  position: relative;
   padding: 72px 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+.section + .section::before,
+.contact::before {
+  content: "";
+  position: absolute;
+  left: max(14px, calc((100% - var(--max)) / 2));
+  right: max(14px, calc((100% - var(--max)) / 2));
+  top: 0;
+  height: 1px;
+  background: var(--section-fade);
+  opacity: .48;
+  pointer-events: none;
 }
 .section--panel {
   border-block: 1px solid var(--line);
@@ -916,6 +932,8 @@ h1 strong {
   overflow: clip;
   padding: 82px 0;
   background: var(--blue-strong);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
 }
 .contact::after {
   content: "</>";
@@ -971,21 +989,20 @@ h1 strong {
   70%, 100% { box-shadow: 0 0 0 9px rgba(147,197,253,0); }
 }
 @keyframes reveal-up {
-  from { opacity: .01; transform: translateY(34px); }
+  from { opacity: .01; transform: translateY(22px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal-soft {
+  from { opacity: .6; transform: scale(.992); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @supports (animation-timeline: view()) {
   .section__split,
-  .timeline__item,
   .hero__stats,
-  .hero__glow,
-  .hero__lead,
-  .hero__actions,
   .consultancy__intro,
   .consultancy__services article,
   .section__heading,
-  .section,
   .profile-card,
   .skill-card,
   .timeline__item,
@@ -997,7 +1014,25 @@ h1 strong {
   .contact__inner {
     animation: reveal-up both;
     animation-timeline: view();
-    animation-range: entry 8% cover 52%;
+    animation-range: entry 8% cover 36%;
+  }
+  .section--panel,
+  .linkedin-window,
+  .contact__inner {
+    animation: reveal-soft both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 28%;
+  }
+}
+
+@media (min-width: 760px) {
+  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .achievement { grid-template-columns: 210px 1fr; gap: 44px; }
+  .achievement__badge { width: 205px; }
+  .footer__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
@@ -1023,18 +1058,7 @@ h1 strong {
   .credential__link { grid-column: 2; }
 }
 
-@media (min-width: 760px) {
-  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .achievement { grid-template-columns: 210px 1fr; gap: 44px; }
-  .achievement__badge { width: 205px; }
-  .footer__inner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
-@media (min-width: 980px) {
+@media (min-width: 1120px) {
   :root { --header: 76px; }
   .nav {
     min-height: var(--header);
@@ -1131,6 +1155,15 @@ h1 strong {
     min-height: 820px;
     padding-bottom: 110px;
   }
+  .section { padding-block: 108px; }
+}
+
+@media (min-width: 2400px) {
+  :root { --max: 1680px; }
+  .hero {
+    min-height: 900px;
+  }
+  .section h2 { font-size: clamp(3.6rem, 3.4vw, 5.2rem); }
 }
 
 @media (hover: none) {
