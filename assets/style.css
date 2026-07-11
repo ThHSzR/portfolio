@@ -556,10 +556,11 @@ h1 strong {
 .company-emblem.company-emblem--ocb {
   width: 150px;
   height: 150px;
-  padding: 20px;
+  padding: 05px;
   object-fit: contain;
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 24px;
+  object-fit: contain;
   object-position: center; 
   box-shadow: 0 18px 45px rgba(0,0,0,.28); 
   background: #fff;
