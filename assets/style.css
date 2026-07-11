@@ -976,6 +976,17 @@ h1 strong {
 }
 
 @supports (animation-timeline: view()) {
+  .section__split,
+  .timeline__item,
+  .hero__stats,
+  .hero__glow,
+  .hero__lead,
+  .hero__actions,
+  .consultancy__intro,
+  .consultancy__services article,
+  .section__heading,
+  .section,
+  .profile-card,
   .skill-card,
   .timeline__item,
   .experience-note,
@@ -986,7 +997,7 @@ h1 strong {
   .contact__inner {
     animation: reveal-up both;
     animation-timeline: view();
-    animation-range: entry 8% cover 32%;
+    animation-range: entry 8% cover 52%;
   }
 }
 
