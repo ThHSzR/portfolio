@@ -129,6 +129,7 @@ h1, h2, h3, p { margin-top: 0; }
   position: relative;
   flex: 0 0 auto;
   padding: 8px 10px;
+  margin-top: 1px;
   border: 1px solid rgba(255,255,255,.07);
   border-radius: 999px;
   background: rgba(255,255,255,.025);
@@ -245,16 +246,26 @@ h1, h2, h3, p { margin-top: 0; }
 }
 h1 {
   margin-bottom: 22px;
-  font-size: clamp(2.85rem, 16vw, 4.8rem);
-  line-height: .94;
+  font-size: clamp(2.35rem, 11vw, 4.8rem);
+  line-height: 1.12;
   font-weight: 650;
 }
+h1 span,
 h1 strong {
+  display: block;
+  max-width: 100%;
+  line-height: inherit;
+  overflow-wrap: break-word;
+}
+h1 strong {
+  margin-bottom: -.14em;
+  padding-bottom: .14em;
   color: transparent;
   background: linear-gradient(90deg, var(--blue), #93c5fd, #fff);
   -webkit-background-clip: text;
   background-clip: text;
   font-weight: 700;
+  -webkit-text-fill-color: transparent;
 }
 .hero__lead {
   max-width: 680px;
@@ -1059,7 +1070,9 @@ h1 strong {
     gap: 70px;
   }
   .hero__glow { width: 440px; height: 440px; top: 80px; }
-  h1 { font-size: clamp(4.7rem, 7vw, 6.9rem); }
+  h1 { font-size: clamp(4rem, 5.2vw, 6rem); }
+  h1 span,
+  h1 strong { white-space: nowrap; }
   .profile-card { transform: rotate(1.2deg); }
   .section { padding: 92px 0; }
   .section__split,
