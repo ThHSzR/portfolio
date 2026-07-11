@@ -77,7 +77,7 @@
 
         <aside class="profile-card" aria-label="Resumo do perfil">
           <div class="profile-card__visual">
-            <div class="profile-card__orbit" aria-hidden="true"></div>
+            <div class="profile-card__orbit" aria-hidden="true"><span></span></div>
             <div class="avatar">
               <img src="assets/profile-photo.webp" alt="Foto de Thiago Henrique Souza Rodrigues" width="512" height="512" decoding="async" fetchpriority="high">
             </div>
@@ -144,7 +144,7 @@
         </div>
 
         <div class="timeline">
-          <article class="timeline__item timeline__item--featured timeline__item--current">
+          <a class="timeline__item timeline__item--featured timeline__item--current timeline__item--link" href="https://www.goiascooperativo.coop.br/" target="_blank" rel="noopener noreferrer" aria-label="Visitar site do Sistema OCB/GO">
             <div class="timeline__meta">
               <img class="company-emblem company-emblem--ocb" src="assets/ocb-go-logo.png" alt="Logo OCB/GO" width="1003" height="734" loading="lazy" decoding="async">
               <span>jul 2026 — atual</span>
@@ -163,9 +163,9 @@
               </ul>
               <ul class="chips" aria-label="Tecnologias relacionadas"><li>Suporte N1/N2</li><li>Infraestrutura de campo</li><li>Redes</li><li>Ativos de TI</li><li>Documentação</li></ul>
             </div>
-          </article>
+          </a>
 
-          <article class="timeline__item timeline__item--featured">
+          <a class="timeline__item timeline__item--featured timeline__item--link" href="https://goias.gov.br/esporte/" target="_blank" rel="noopener noreferrer" aria-label="Visitar site da Secretaria de Estado de Esporte e Lazer de Goiás">
             <div class="timeline__meta">
               <img class="company-emblem" src="assets/goias-emblem.webp" alt="Brasão do Estado de Goiás" width="320" height="320" loading="lazy" decoding="async">
               <span>ago 2024 — jul 2026</span>
@@ -184,7 +184,7 @@
               </ul>
               <ul class="chips" aria-label="Tecnologias relacionadas"><li>Active Directory</li><li>Microsoft 365</li><li>Suporte N1/N2</li><li>Redes</li><li>SLA</li><li>Documentação</li></ul>
             </div>
-          </article>
+          </a>
           <aside class="experience-note" aria-label="Experiência administrativa complementar">
             <div class="experience-note__header">
               <span class="experience-note__label">Bagagem complementar</span>
@@ -313,6 +313,21 @@
             <div><p class="tag">Certificação profissional</p><h3>Google Cybersecurity</h3><p>Fundamentos de segurança e proteção de ambientes.</p></div>
             <span class="credential__link">Ver credencial <span aria-hidden="true">↗</span></span>
           </a>
+          <article class="credential credential--compact" aria-label="Cursos profissionalizantes complementares">
+            <div>
+              <p class="tag">Cursos Profissionalizantes</p>
+              <ul class="compact-courses">
+                <li><span>Administrador de Sistemas Operacional de Redes</span><small>SENAI Goiás</small></li>
+                <li><span>Analista em Redes</span><small>SENAI Goiás</small></li>
+                <li><span>Cabeamento Estruturado</span><small>SENAI Goiás</small></li>
+                <li><span>Fundamentos de TI</span><small>Fundação Bradesco</small></li>
+                <li><span>Introduction to Cybersecurity</span><small>Cisco Academy</small></li>
+                <li><span>Lógica de Programação</span><small>SENAI Goiás</small></li>
+                <li><span>Operador de Redes</span><small>SENAI Goiás</small></li>
+                <li><span>Tecnologia da Informação e Comunicação</span><small>SENAI Goiás</small></li>
+              </ul>
+            </div>
+          </article>
         </div>
       </div>
     </section>
