@@ -646,6 +646,40 @@ h1 strong {
   font-size: clamp(1.35rem, 6vw, 2rem);
   line-height: 1.2;
 }
+.org-mini-logos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: min(100%, 310px);
+  margin: 12px 0 0;
+}
+.org-mini-logos__item {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px 12px 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  background: transparent;
+}
+.org-mini-logos img {
+  justify-self: center;
+  width: 100%;
+  max-width: 122px;
+  height: 34px;
+  object-fit: contain;
+  opacity: .9;
+}
+.org-mini-logos small {
+  color: rgba(255,255,255,.62);
+  font-size: 0.65rem;
+  line-height: 1.35;
+  text-align: justify;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
 .impact-list {
   margin: 24px 0;
   list-style: none;
