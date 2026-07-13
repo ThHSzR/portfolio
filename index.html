@@ -372,10 +372,10 @@
         <h2>Seu próximo desafio de TI<br>pode começar <span>por aqui.</span></h2>
         <p>Atuo com infraestrutura de TI, suporte técnico, redes, campo, cloud e segurança da informação — e sigo aberto a boas conexões, projetos e oportunidades de evolução profissional.</p>
         <div class="contact__actions">
-          <a class="button button--contact-primary" href="mailto:contato@thsouza.eng.br">
+          <button class="button button--contact-primary button--copy" type="button" data-copy-email="contato@thsouza.eng.br" aria-describedby="copy-email-feedback">
             <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
             contato@thsouza.eng.br
-          </a>
+          </button>
           <a class="button button--outline-light" href="https://www.linkedin.com/in/thhszr" target="_blank" rel="noopener noreferrer">
             <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.04H3.54V8.98H7.1v11.47Z"/></svg>
             LinkedIn
@@ -389,6 +389,7 @@
             Instagram
           </a>
         </div>
+        <p class="copy-toast" id="copy-email-feedback" role="status" aria-live="polite">E-mail copiado para a área de transferência.</p>
       </div>
     </section>
   </main>
@@ -400,5 +401,51 @@
       <a href="#inicio">Voltar ao topo ↑</a>
     </div>
   </footer>
+  <script>
+    (() => {
+      const button = document.querySelector("[data-copy-email]");
+      const feedback = document.getElementById("copy-email-feedback");
+
+      if (!button || !feedback) return;
+
+      const showFeedback = (message) => {
+        feedback.textContent = message;
+        feedback.classList.add("is-visible");
+        clearTimeout(window.copyEmailFeedbackTimer);
+        window.copyEmailFeedbackTimer = setTimeout(() => {
+          feedback.classList.remove("is-visible");
+        }, 2200);
+      };
+
+      const copyText = async (text) => {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+
+        const field = document.createElement("textarea");
+        field.value = text;
+        field.setAttribute("readonly", "");
+        field.style.position = "fixed";
+        field.style.inset = "0 auto auto 0";
+        field.style.opacity = "0";
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand("copy");
+        field.remove();
+      };
+
+      button.addEventListener("click", async () => {
+        const email = button.dataset.copyEmail;
+
+        try {
+          await copyText(email);
+          showFeedback("E-mail copiado para a área de transferência.");
+        } catch {
+          showFeedback("Não foi possível copiar. E-mail: " + email);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
