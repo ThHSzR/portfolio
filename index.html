@@ -57,6 +57,7 @@
         <a href="#competencias">Skills</a>
         <a href="#formacao">Formação</a>
         <a href="#contato">Contato</a>
+        <a class="nav__drawer-cta" href="#contato" aria-label="Fale Comigo">Fale Comigo</a>
       </nav>
       <a class="button button--small nav__cta" href="#contato" aria-label="Fale comigo">Fale comigo</a>
       
@@ -439,7 +440,7 @@
         if (event.key === "Escape") setMenu(false);
       });
 
-      window.matchMedia("(min-width: 860px)").addEventListener("change", (event) => {
+      window.matchMedia("(min-width: 900px)").addEventListener("change", (event) => {
         if (event.matches) setMenu(false);
       });
     })();
