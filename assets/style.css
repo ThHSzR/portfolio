@@ -266,7 +266,6 @@ body.nav-open { overflow: hidden; }
 .button--copy { appearance: none; }
 .button__icon { flex: 0 0 18px; width: 18px; height: 18px; fill: currentColor; }
 .site-header .nav__cta { display: none; }
-
 .hero {
   position: relative;
   overflow: clip;
@@ -936,15 +935,25 @@ h1 strong {
   font-size: .84rem;
 }
 .social-profile__link { color: var(--blue); font-size: .82rem; font-weight: 800; }
+.social-profile--github {
+  align-items: start;
+}
+.social-profile--github .github-chart,
+.social-profile--github .social-profile__link--github {
+  grid-column: 1 / -1;
+}
 .github-chart {
-  width: 100%;
+  justify-self: center;
+  display: block;
+  width: min(100%, 760px);
   min-height: 82px;
-  margin: 2px 0 14px;
+  margin: 4px auto 14px;
   padding: 10px;
   border-radius: 12px;
   background: transparent;
   object-fit: contain;
 }
+.social-profile__link--github { justify-self: start; }
 
 .education-grid { display: grid; grid-template-columns: 1fr; gap: 42px; }
 .education-grid__intro { max-width: 430px; margin-top: 22px; color: var(--muted); }
@@ -953,6 +962,7 @@ h1 strong {
 .education-grid__description p:last-child { margin-bottom: 0; color: var(--muted-soft); }
 .credentials { border-top: 1px solid var(--line); }
 .credential { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 16px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.credential--featured { border-bottom: 0; }
 .credential--linked {
   align-items: start;
   padding: 24px 22px;
@@ -1130,9 +1140,10 @@ h1 strong {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #34d399;
+  background: var(--green);
   box-shadow: 0 0 0 4px rgba(52,211,153,.14), 0 0 16px rgba(52,211,153,.45);
   transform: translateY(-50%);
+  animation: status-pulse .75s ease-out infinite;
 }
 .copy-toast[data-state="error"]::after {
   background: #f59e0b;
@@ -1252,16 +1263,19 @@ h1 strong {
   }
 }
 
-@media (min-width: 860px) {
-  :root { --header: 92px; }
+@media (min-width: 900px) {
+  :root { --header: 76px; }
   .container { width: min(calc(100% - 40px), var(--max)); }
   .site-header {
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
   }
   .nav {
-    grid-template-columns: auto 1fr;
+    min-height: var(--header);
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
+    gap: 24px;
+    padding-block: 0;
   }
   .nav__toggle,
   .nav__overlay,
@@ -1272,30 +1286,30 @@ h1 strong {
     width: auto;
     display: flex;
     flex-direction: row;
-    justify-self: end;
-    gap: 8px;
+    justify-self: center;
+    gap: 14px;
     padding: 0;
-    overflow-x: auto;
-    overflow-y: visible;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
+    overflow: visible;
+    overscroll-behavior: auto;
     background: transparent;
-    border-right: 0;
+    border-left: 0;
     box-shadow: none;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    font-size: .7rem;
-    letter-spacing: .06em;
+    font-size: .66rem;
+    letter-spacing: .11em;
     white-space: nowrap;
     transform: none;
     transition: none;
   }
-  .nav__links::-webkit-scrollbar { display: none; }
   .nav__links a {
     flex: 0 0 auto;
-    padding: 8px 10px;
-    border-radius: 999px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
   }
+  .site-header .nav__cta { display: inline-flex; }
   .hero__actions,
   .contact__actions {
     flex-direction: row;
@@ -1318,28 +1332,24 @@ h1 strong {
   .timeline__item--current::before {
     right: 22px;
   }
+
+}
+
+@media (min-width: 970px) {
+  .education-grid {
+    grid-template-columns: .86fr 1.14fr;
+    gap: clamp(56px, 6vw, 86px);
+    row-gap: 52px;
+  }
+  .education-grid > .credentials {
+    grid-column: 1 / -1;
+  }
+  .credential--featured {
+    grid-column: 2;
+  }
 }
 
 @media (min-width: 1120px) {
-  :root { --header: 76px; }
-  .nav {
-    min-height: var(--header);
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 24px;
-    padding-block: 0;
-  }
-  .nav__links {
-    justify-self: center;
-    gap: 14px;
-    font-size: .66rem;
-    letter-spacing: .11em;
-  }
-  .nav__links a {
-    padding: 0;
-    border: 0;
-    background: transparent;
-  }
-  .site-header .nav__cta { display: inline-flex; }
   .hero {
     padding: calc(var(--header) + 70px) 0 92px;
     min-height: 760px;
@@ -1361,6 +1371,12 @@ h1 strong {
   .ambitions__grid {
     grid-template-columns: .86fr 1.14fr;
     gap: 86px;
+  }
+  .education-grid > .credentials {
+    grid-column: 1 / -1;
+  }
+  .education-grid {
+    row-gap: 52px;
   }
   .section__heading {
     grid-template-columns: 1.45fr .55fr;
@@ -1410,11 +1426,36 @@ h1 strong {
     gap: 62px;
     padding: 46px;
   }
+  .credentials {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    border-top: 0;
+  }
   .credential { grid-template-columns: 100px 1fr; gap: 22px; }
-  .credential--linked { grid-template-columns: 100px 1fr auto; align-items: center; padding: 28px 30px; }
-  .credential.credential--compact { grid-template-columns: 1fr; padding-left: 0; }
+  .credential--featured {
+    grid-column: 2;
+    border-bottom: 0;
+  }
+  .credential--linked {
+    grid-template-columns: 76px minmax(0, 1fr) auto;
+    align-items: start;
+    padding: 30px;
+    border: 1px solid var(--line);
+  }
+  .credential--linked .credential__link {
+    grid-column: 3;
+    align-self: end;
+    white-space: nowrap;
+  }
+  .credential.credential--compact {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+    padding-left: 0;
+    border-bottom: 0;
+  }
   .credential__institution-logo { width: 78px; height: 78px; border-radius: 18px; }
-  .credential__link { grid-column: auto; white-space: nowrap; }
+  .compact-courses { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .achievement {
     grid-template-columns: 300px 1fr;
     gap: 86px;
@@ -1423,7 +1464,6 @@ h1 strong {
   .contact { padding: 112px 0; }
   .contact::after { top: -80px; font-size: 24rem; }
 }
-
 @media (min-width: 1440px) {
   :root { --max: 1280px; }
   .hero__grid { gap: 96px; }
