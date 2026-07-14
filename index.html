@@ -39,7 +39,17 @@
         <span class="brand__mark">&lt;TH/&gt;</span>
         <span class="brand__text">Thiago Souza</span>
       </a>
-      <nav class="nav__links" aria-label="Navegação principal">
+      <button class="nav__toggle" type="button" aria-label="Abrir menu" aria-controls="site-menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav__overlay" data-menu-close aria-hidden="true"></div>
+      <nav class="nav__links" id="site-menu" aria-label="Navegação principal">
+        <div class="nav__menu-header">
+          <span class="brand__mark">&lt;TH/&gt;</span>
+          <button class="nav__close" type="button" data-menu-close aria-label="Fechar menu">×</button>
+        </div>
         <a href="#inicio">Início</a>
         <a href="#sobre">Sobre</a>
         <a href="#consultoria">Consultoria</a>
@@ -59,7 +69,7 @@
       <div class="container hero__grid">
         <div class="hero__content">
           <p class="eyebrow"><span></span> Engenharia de Computação aplicada à infraestrutura</p>
-          <h1><span>Thiago Henrique</span><strong>Souza Rodrigues</strong></h1><h1</h1>
+          <h1><span>Thiago Henrique</span><strong>Souza Rodrigues</strong></h1>
           <p class="hero__lead">Bacharelando em Engenharia de Computação e estagiário em infraestrutura de TI no Sistema OCB/GO, com foco em suporte técnico, redes e segurança da informação.</p>
           <div class="hero__actions">
             <a class="button" href="#experiencia">Conheça minha trajetória <span aria-hidden="true">↓</span></a>
@@ -404,6 +414,78 @@
     </div>
   </footer>
   <script>
+    (() => {
+      const toggle = document.querySelector(".nav__toggle");
+      const menu = document.getElementById("site-menu");
+      const closeTargets = document.querySelectorAll("[data-menu-close], .nav__links a");
+
+      if (!toggle || !menu) return;
+
+      const setMenu = (isOpen) => {
+        document.body.classList.toggle("nav-open", isOpen);
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+      };
+
+      toggle.addEventListener("click", () => {
+        setMenu(!document.body.classList.contains("nav-open"));
+      });
+
+      closeTargets.forEach((target) => {
+        target.addEventListener("click", () => setMenu(false));
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setMenu(false);
+      });
+
+      window.matchMedia("(min-width: 860px)").addEventListener("change", (event) => {
+        if (event.matches) setMenu(false);
+      });
+    })();
+
+    (() => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.documentElement.classList.add("js");
+      if (reduceMotion) return;
+
+      const motionGroups = [
+        [".hero .eyebrow", "fade"],
+        [".hero h1", "rise"],
+        [".hero__lead, .hero__actions, .hero__stats", "rise"],
+        [".profile-card", "float"],
+        [".section-kicker", "fade"],
+        [".section h2, .contact h2", "rise"],
+        [".section__heading > p, .about-copy > p, .principle, .consultancy__intro > p:not(.section-kicker)", "slide-right"],
+        [".consultancy__services article, .skill-card, .social-profile, .credential, .ambition-list article", "card"],
+        [".timeline__meta, .experience-note__header, .achievement__badge", "slide-left"],
+        [".timeline__content, .experience-note__content, .education-grid__description, .achievement > div:last-child", "slide-right"],
+        [".company-emblem, .credential__institution-logo, .credential__icon", "pop"],
+        [".impact-list li, .chips li, .skill-card__tags li, .compact-courses li", "micro"]
+      ];
+
+      const animated = new Set();
+      motionGroups.forEach(([selector, motion]) => {
+        document.querySelectorAll(selector).forEach((element, index) => {
+          if (animated.has(element)) return;
+          animated.add(element);
+          element.classList.add("motion-reveal");
+          element.dataset.motion = motion;
+          element.style.setProperty("--motion-delay", `${Math.min(index % 8, 7) * 70}ms`);
+        });
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+
+      document.querySelectorAll(".motion-reveal").forEach((element) => observer.observe(element));
+    })();
+
     (() => {
       const button = document.querySelector("[data-copy-email]");
       const feedback = document.getElementById("copy-email-feedback");
