@@ -410,7 +410,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <p><span>&lt;TH/&gt;</span> Thiago Henrique Souza Rodrigues</p>
-      <p>Feito com HTML + CSS · Goiânia, GO</p>
+      <p>Feito com HTML + CSS + JavaScript · Goiânia, GO</p>
       <a href="#inicio">Voltar ao topo ↑</a>
     </div>
   </footer>
@@ -446,6 +446,15 @@
     })();
 
     (() => {
+      let scrollCorrectionTimers = [];
+      let scrollCorrectionToken = 0;
+
+      const clearScrollCorrections = () => {
+        scrollCorrectionToken += 1;
+        scrollCorrectionTimers.forEach((timer) => window.clearTimeout(timer));
+        scrollCorrectionTimers = [];
+      };
+
       const scrollToTarget = (target) => {
         const header = document.querySelector(".site-header");
         const headerHeight = header ? header.getBoundingClientRect().height : 0;
@@ -455,12 +464,31 @@
       };
 
       const stabilizeScroll = (target, updateHash = true) => {
-        requestAnimationFrame(() => scrollToTarget(target));
-        [90, 260, 620, 1200, 2200, 3600, 5200].forEach((delay) => {
-          window.setTimeout(() => scrollToTarget(target), delay);
+        clearScrollCorrections();
+        const token = scrollCorrectionToken;
+
+        requestAnimationFrame(() => {
+          if (token === scrollCorrectionToken) scrollToTarget(target);
         });
+
+        [90, 260, 620, 1200, 2200, 3600, 5200].forEach((delay) => {
+          const timer = window.setTimeout(() => {
+            if (token === scrollCorrectionToken) scrollToTarget(target);
+          }, delay);
+          scrollCorrectionTimers.push(timer);
+        });
+
         if (updateHash) history.pushState(null, "", `#${target.id}`);
       };
+
+      const navigationKeys = new Set(["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "]);
+
+      window.addEventListener("wheel", clearScrollCorrections, { passive: true });
+      window.addEventListener("touchstart", clearScrollCorrections, { passive: true });
+      window.addEventListener("pointerdown", clearScrollCorrections, { passive: true });
+      window.addEventListener("keydown", (event) => {
+        if (navigationKeys.has(event.key)) clearScrollCorrections();
+      });
 
       document.querySelectorAll('a[href^="#"]').forEach((link) => {
         link.addEventListener("click", (event) => {
