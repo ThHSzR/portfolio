@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Video</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: #000;
+    }
+
+    body {
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      background: #000;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <video id="main-video" src="easter-egg.mp4" controls autoplay loop playsinline></video>
+
+  <script>
+    // Troque este numero para escolher em qual segundo o video comeca.
+    // Exemplos: 0 = inicio, 5 = comeca em 5 segundos, 12.5 = comeca em 12 segundos e meio.
+    const START_AT_SECONDS = 10;
+
+    const video = document.querySelector("#main-video");
+
+    function startVideo() {
+      video.currentTime = START_AT_SECONDS;
+      video.loop = true;
+      video.play().catch(() => {
+        // Se o navegador bloquear, os controles continuam disponiveis.
+      });
+    }
+
+    video.addEventListener("loadedmetadata", startVideo, { once: true });
+  </script>
+</body>
+</html>
