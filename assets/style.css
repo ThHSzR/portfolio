@@ -921,6 +921,42 @@ h1 strong {
   transform: translateY(-3px);
   border-color: rgba(0,124,255,.4);
 }
+.social-profile--linkedin-card {
+  align-items: center;
+}
+.social-profile__main {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.linkedin-badge-slot {
+  --linkedin-badge-scale: 1;
+  display: grid;
+  justify-items: center;
+  justify-self: center;
+  width: calc(340px * var(--linkedin-badge-scale));
+  max-width: 100%;
+  height: calc(310px * var(--linkedin-badge-scale));
+  min-width: 0;
+  overflow: hidden;
+}
+.linkedin-badge-slot .badge-base,
+.linkedin-badge-slot .LI-profile-badge {
+  width: 340px;
+  max-width: none;
+  transform: scale(var(--linkedin-badge-scale));
+  transform-origin: top left;
+}
+.linkedin-badge-slot .LI-simple-link {
+  display: none;
+}
+.social-profile__link--linkedin-mobile {
+  justify-self: center;
+}
+.social-profile__link--linkedin-desktop {
+  display: none;
+}
 .social-profile__icon {
   width: 52px;
   aspect-ratio: 1;
@@ -1278,6 +1314,18 @@ h1 strong {
   }
 }
 
+@media (max-width: 420px) {
+  .linkedin-badge-slot {
+    --linkedin-badge-scale: .78;
+  }
+}
+
+@media (max-width: 380px) {
+  .linkedin-badge-slot {
+    --linkedin-badge-scale: .72;
+  }
+}
+
 @media (min-width: 900px) {
   :root { --header: 76px; }
   .container { width: min(calc(100% - 40px), var(--max)); }
@@ -1337,6 +1385,7 @@ h1 strong {
   }
   .hero__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .social-profile { grid-template-columns: 52px 1fr; }
+  .social-profile--linkedin-card { grid-template-columns: 1fr; }
   .credential { grid-template-columns: 74px 1fr; }
   .credential.credential--compact { grid-template-columns: 1fr; }
   .credential__institution-logo { width: 74px; height: 74px; }
@@ -1444,6 +1493,17 @@ h1 strong {
     align-items: center;
     gap: 62px;
     padding: 46px;
+  }
+  .social-profile--linkedin-card {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+    gap: 24px;
+  }
+  .linkedin-badge-slot { justify-items: end; }
+  .social-profile__link--linkedin-desktop {
+    display: inline;
+  }
+  .social-profile__link--linkedin-mobile {
+    display: none;
   }
   .credentials {
     display: grid;

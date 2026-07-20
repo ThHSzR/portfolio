@@ -270,19 +270,25 @@
           <p>No LinkedIn compartilho minha trajetória profissional em engenharia e infraestrutura. No GitHub mantenho projetos pessoais e acadêmicos desenvolvidos ao longo da formação.</p>
         </div>
         <div class="social-profiles">
-          <a class="social-profile" href="https://www.linkedin.com/in/thhszr" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil de Thiago Souza no LinkedIn">
-            <div class="social-profile__icon social-profile__icon--linkedin" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img">
-                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.04H3.54V8.98H7.1v11.47Z"/>
-              </svg>
+          <article class="social-profile social-profile--linkedin-card" aria-label="Perfil de Thiago Souza no LinkedIn">
+            <div class="social-profile__main">
+              <div class="social-profile__icon social-profile__icon--linkedin" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                  <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.04H3.54V8.98H7.1v11.47Z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="linkedin-card__eyebrow">LinkedIn</p>
+                <h3>Thiago Souza</h3>
+                <p>Experiência profissional, certificações e conexões.</p>
+                <a class="social-profile__link social-profile__link--linkedin-desktop" href="https://www.linkedin.com/in/thhszr" target="_blank" rel="noopener noreferrer">Ver LinkedIn <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
-            <div>
-              <p class="linkedin-card__eyebrow">LinkedIn</p>
-              <h3>Thiago Souza</h3>
-              <p>Experiência profissional, certificações e conexões.</p>
-              <span class="social-profile__link">Ver LinkedIn <span aria-hidden="true">↗</span></span>
+            <div class="linkedin-badge-slot" aria-label="Badge oficial do LinkedIn">
+              <div class="badge-base LI-profile-badge" data-locale="pt_BR" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="thhszr" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/thhszr?trk=profile-badge">Thiago Henrique S.</a></div>
             </div>
-          </a>
+            <a class="social-profile__link social-profile__link--linkedin-mobile" href="https://www.linkedin.com/in/thhszr" target="_blank" rel="noopener noreferrer">Ver LinkedIn <span aria-hidden="true">↗</span></a>
+          </article>
           <a class="social-profile social-profile--github" href="https://github.com/ThHSzR" target="_blank" rel="noopener noreferrer" aria-label="Ver projetos de Thiago Souza no GitHub">
             <div class="social-profile__icon social-profile__icon--github" aria-hidden="true">
               <svg viewBox="0 0 24 24" role="img">
@@ -415,6 +421,7 @@
       <a href="#inicio">Voltar ao topo ↑</a>
     </div>
   </footer>
+  <script id="linkedin-badge-script" src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
   <script>
     (() => {
       const toggle = document.querySelector(".nav__toggle");
@@ -443,6 +450,46 @@
 
       window.matchMedia("(min-width: 900px)").addEventListener("change", (event) => {
         if (event.matches) setMenu(false);
+      });
+    })();
+
+    (() => {
+      const badge = document.querySelector(".LI-profile-badge");
+      if (!badge) return;
+
+      const scriptSrc = "https://platform.linkedin.com/badges/js/profile.js";
+      const retryDelays = [900, 1800, 3200, 5200, 8000, 12000];
+      let extraScriptRequested = false;
+
+      const hasLinkedInIframe = () => Boolean(badge.querySelector("iframe"));
+
+      const renderLinkedInBadge = () => {
+        if (hasLinkedInIframe()) return;
+        badge.removeAttribute("data-rendered");
+        if (typeof window.LIRenderAll === "function") {
+          window.LIRenderAll();
+        }
+      };
+
+      const requestLinkedInScriptAgain = () => {
+        if (hasLinkedInIframe() || typeof window.LIRenderAll === "function" || extraScriptRequested) return;
+
+        const script = document.createElement("script");
+        script.src = `${scriptSrc}?retry=${Date.now()}`;
+        script.async = true;
+        script.defer = true;
+        script.type = "text/javascript";
+        script.onload = renderLinkedInBadge;
+        extraScriptRequested = true;
+        document.body.appendChild(script);
+      };
+
+      window.addEventListener("load", renderLinkedInBadge);
+      retryDelays.forEach((delay) => {
+        window.setTimeout(() => {
+          renderLinkedInBadge();
+          requestLinkedInScriptAgain();
+        }, delay);
       });
     })();
 
