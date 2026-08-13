@@ -208,6 +208,7 @@ h1, h2, h3, p { margin-top: 0; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   width: min(100%, 178px);
   min-height: 42px;
   padding: 13px 14px;
@@ -922,22 +923,24 @@ h1 strong {
   border-color: rgba(0,124,255,.4);
 }
 .social-profile--linkedin-card {
+  --linkedin-badge-scale: .86;
+  --linkedin-badge-width: 292px;
+  --linkedin-badge-height: 267px;
   align-items: center;
 }
 .social-profile__main {
   display: grid;
   grid-template-columns: 52px minmax(0, 1fr);
   gap: 16px;
-  align-items: start;
+  align-items: center;
 }
 .linkedin-badge-slot {
-  --linkedin-badge-scale: 1;
   display: grid;
   justify-items: center;
   justify-self: center;
-  width: calc(340px * var(--linkedin-badge-scale));
+  width: var(--linkedin-badge-width);
   max-width: 100%;
-  height: calc(310px * var(--linkedin-badge-scale));
+  height: var(--linkedin-badge-height);
   min-width: 0;
   overflow: hidden;
 }
@@ -1315,14 +1318,38 @@ h1 strong {
 }
 
 @media (max-width: 420px) {
-  .linkedin-badge-slot {
+  .social-profile--linkedin-card {
     --linkedin-badge-scale: .78;
+    --linkedin-badge-width: 265px;
+    --linkedin-badge-height: 242px;
   }
 }
 
 @media (max-width: 380px) {
-  .linkedin-badge-slot {
+  .social-profile--linkedin-card {
     --linkedin-badge-scale: .72;
+    --linkedin-badge-width: 245px;
+    --linkedin-badge-height: 223px;
+  }
+}
+
+@media (min-width: 560px) {
+  .social-profile--linkedin-card {
+    grid-template-columns: minmax(0, 1fr) var(--linkedin-badge-width);
+    gap: 16px;
+    align-items: center;
+    padding-right: 22px;
+  }
+  .linkedin-badge-slot {
+    justify-items: end;
+    justify-self: end;
+    align-self: center;
+  }
+  .social-profile__link--linkedin-desktop {
+    display: inline;
+  }
+  .social-profile__link--linkedin-mobile {
+    display: none;
   }
 }
 
@@ -1385,7 +1412,23 @@ h1 strong {
   }
   .hero__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .social-profile { grid-template-columns: 52px 1fr; }
-  .social-profile--linkedin-card { grid-template-columns: 1fr; }
+  .social-profile--linkedin-card {
+    grid-template-columns: minmax(0, 1fr) var(--linkedin-badge-width);
+    gap: 16px;
+    align-items: center;
+    padding-right: 22px;
+  }
+  .linkedin-badge-slot {
+    justify-items: end;
+    justify-self: end;
+    align-self: center;
+  }
+  .social-profile__link--linkedin-desktop {
+    display: inline;
+  }
+  .social-profile__link--linkedin-mobile {
+    display: none;
+  }
   .credential { grid-template-columns: 74px 1fr; }
   .credential.credential--compact { grid-template-columns: 1fr; }
   .credential__institution-logo { width: 74px; height: 74px; }
@@ -1495,10 +1538,16 @@ h1 strong {
     padding: 46px;
   }
   .social-profile--linkedin-card {
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
-    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) var(--linkedin-badge-width);
+    gap: 12px;
+    align-items: center;
+    padding-right: 22px;
   }
-  .linkedin-badge-slot { justify-items: end; }
+  .linkedin-badge-slot {
+    justify-items: end;
+    justify-self: end;
+    align-self: center;
+  }
   .social-profile__link--linkedin-desktop {
     display: inline;
   }
