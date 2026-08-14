@@ -477,46 +477,6 @@
     })();
 
     (() => {
-      const badge = document.querySelector(".LI-profile-badge");
-      if (!badge) return;
-
-      const scriptSrc = "https://platform.linkedin.com/badges/js/profile.js";
-      const retryDelays = [900, 1800, 3200, 5200, 8000, 12000];
-      let extraScriptRequested = false;
-
-      const hasLinkedInIframe = () => Boolean(badge.querySelector("iframe"));
-
-      const renderLinkedInBadge = () => {
-        if (hasLinkedInIframe()) return;
-        badge.removeAttribute("data-rendered");
-        if (typeof window.LIRenderAll === "function") {
-          window.LIRenderAll();
-        }
-      };
-
-      const requestLinkedInScriptAgain = () => {
-        if (hasLinkedInIframe() || typeof window.LIRenderAll === "function" || extraScriptRequested) return;
-
-        const script = document.createElement("script");
-        script.src = `${scriptSrc}?retry=${Date.now()}`;
-        script.async = true;
-        script.defer = true;
-        script.type = "text/javascript";
-        script.onload = renderLinkedInBadge;
-        extraScriptRequested = true;
-        document.body.appendChild(script);
-      };
-
-      window.addEventListener("load", renderLinkedInBadge);
-      retryDelays.forEach((delay) => {
-        window.setTimeout(() => {
-          renderLinkedInBadge();
-          requestLinkedInScriptAgain();
-        }, delay);
-      });
-    })();
-
-    (() => {
       let scrollCorrectionTimers = [];
       let scrollCorrectionToken = 0;
 
