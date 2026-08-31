@@ -11,7 +11,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <title>Jeremias — Games & Links</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/jeremias-duck.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="assets/jeremias-duck.jpg">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -25,26 +26,43 @@
         <p class="kicker">GAME PROFILE</p>
         <h1 id="profile-title">Jeremias</h1>
         <p class="handle">@jeremiasht</p>
-        <p class="bio">Perfis, bibliotecas e redes reunidos em um painel direto para jogar, conversar e acompanhar conteúdo.</p>
       </div>
     </section>
 
-    <section class="platforms" aria-label="Links do Jeremias">
-    <a class="platform-card platform-card--instagram" href="https://www.instagram.com/jeremiashth/" target="_blank" rel="noopener noreferrer">
-        <span class="platform-icon"><img src="assets/icons/instagram.svg" alt=""></span>
-        <span class="platform-copy">
-          <strong>Instagram</strong>
-          <small>Registros e atualizações</small>
-        </span>
-      </a>
+    <div class="content-grid">
+      <section class="social-feeds" aria-labelledby="social-feeds-title">
+        <div class="feeds-grid">
+          <article class="feed-card feed-card--instagram">
+            <header class="feed-header">
+              <span class="feed-icon feed-icon--app"><img src="assets/icons/instagram-app.png" alt=""></span>
+              <div>
+                <h3>Instagram</h3>
+                <span>@jeremiashth</span>
+              </div>
+            </header>
+            <div class="feed-embed feed-embed--instagram">
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/jeremiashth/?theme=dark"
+                data-instgrm-theme="dark"
+                data-instgrm-version="14">
+                <a href="https://www.instagram.com/jeremiashth/" target="_blank" rel="noopener noreferrer">
+                  Abrir perfil do Jeremias no Instagram
+                </a>
+              </blockquote>
+            </div>
+            <a class="feed-click-target" href="https://www.instagram.com/jeremiashth/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram do Jeremias"></a>
+          </article>
+        </div>
+      </section>
 
-      <a class="platform-card platform-card--x" href="https://twitter.com/jeremiasth" target="_blank" rel="noopener noreferrer">
-        <span class="platform-icon"><img src="assets/icons/x.svg" alt=""></span>
-        <span class="platform-copy">
-          <strong>X / Twitter</strong>
-          <small>Publicações e atualizações</small>
-        </span>
-      </a>
+      <section class="platforms" aria-label="Links do Jeremias">
+        <a class="platform-card platform-card--twitter" href="https://twitter.com/jeremiasth" target="_blank" rel="noopener noreferrer">
+          <span class="platform-icon"><img src="assets/icons/twitter.svg" alt=""></span>
+          <span class="platform-copy">
+            <strong>Twitter</strong>
+            <small>Publicações e atualizações</small>
+          </span>
+        </a>
 
       <a class="platform-card platform-card--discord" href="https://discordapp.com/users/194960373294694400/" target="_blank" rel="noopener noreferrer">
         <span class="platform-icon"><img src="assets/icons/discord.svg" alt=""></span>
@@ -103,19 +121,24 @@
           <small>Canal e conteúdo em vídeo</small>
         </span>
       </a>
-      <a class="platform-card platform-card--youtube" href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
-        <span class="platform-icon"><img src="assets/icons/svgviewer-output.svg" alt="" style="filter: invert(1)"></span>
-        <span class="platform-copy">
-          <strong>?</strong>
-          <small>?</small>
-        </span>
-      </a>
-    </section>
+      </section>
+    </div>
 
     <footer class="site-footer">
       <span></span>
       <p>GG, até a próxima.</p>
     </footer>
   </main>
+  <a class="easter-egg" href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" aria-label="Abrir surpresa">
+    ?
+  </a>
+  <script async src="https://www.instagram.com/embed.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      if (window.instgrm?.Embeds) {
+        window.instgrm.Embeds.process();
+      }
+    });
+  </script>
 </body>
 </html>
