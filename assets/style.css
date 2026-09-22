@@ -760,15 +760,15 @@ h1 strong {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  width: min(100%, 310px);
+  width: min(100%, 340px);
   margin: 12px 0 0;
 }
 .org-mini-logos__item {
   display: grid;
   align-content: start;
-  gap: 8px;
+  gap: 10px;
   min-width: 0;
-  padding: 10px 12px 12px;
+  padding: 10px 10px 12px;
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 10px;
   background: transparent;
@@ -783,11 +783,17 @@ h1 strong {
 }
 .org-mini-logos small {
   color: rgba(255,255,255,.62);
-  font-size: 0.65rem;
-  line-height: 1.35;
+  font-size: .68rem;
+  line-height: 1.5;
   text-align: justify;
-  overflow-wrap: normal;
-  hyphens: none;
+  text-align-last: left;
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+@media (max-width: 420px) {
+  .org-mini-logos { grid-template-columns: 1fr; }
 }
 
 .impact-list {
@@ -915,12 +921,7 @@ h1 strong {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #0a0d13;
-  transition: transform .2s ease, border-color .2s ease;
-}
-.social-profile:hover,
-.social-profile:focus-visible {
-  transform: translateY(-3px);
-  border-color: rgba(0,124,255,.4);
+  transition: border-color .2s ease, background .2s ease;
 }
 .social-profile--linkedin-card {
   --linkedin-badge-scale: .86;
@@ -969,9 +970,6 @@ h1 strong {
   color: white;
 }
 .social-profile__icon svg { width: 28px; height: 28px; fill: currentColor; }
-.social-profile__icon svg { transition: transform .22s ease; }
-.social-profile:hover .social-profile__icon svg,
-.social-profile:focus-visible .social-profile__icon svg { transform: scale(1.08) rotate(-3deg); }
 .social-profile__icon--linkedin { background: #0a66c2; }
 .social-profile__icon--github { border: 1px solid var(--line-strong); background: #171b22; }
 .linkedin-card__eyebrow {
@@ -1118,6 +1116,66 @@ h1 strong {
   border-left: 2px solid var(--blue);
 }
 .ambitions { background: linear-gradient(135deg, rgba(35,136,245,.07), transparent); }
+
+.section.networks {
+  padding-block: 48px;
+  contain-intrinsic-size: auto 320px;
+}
+.networks__inner {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+}
+.networks h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); }
+.networks__intro > p:last-child {
+  max-width: 440px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: .94rem;
+}
+.networks__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  list-style: none;
+}
+.network-link {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color .2s ease, background .2s ease;
+}
+.network-link:hover,
+.network-link:focus-visible,
+.social-profile:hover,
+.social-profile:focus-visible,
+.social-profile:focus-within {
+  border-color: var(--blue);
+  background: rgba(0,124,255,.09);
+}
+.network-link__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: var(--cyan);
+}
+.network-link__top .button__icon { width: 22px; height: 22px; flex-basis: 22px; }
+.network-link__top > span { color: var(--muted); }
+.network-link__handle { color: var(--muted); font-size: .78rem; overflow-wrap: anywhere; }
+
+@media (min-width: 600px) {
+  .networks__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 1120px) {
+  .networks__inner { grid-template-columns: minmax(0, .8fr) minmax(0, 1.6fr); gap: 40px; }
+}
 
 .contact {
   position: relative;
@@ -1353,7 +1411,7 @@ h1 strong {
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1120px) {
   :root { --header: 76px; }
   .container { width: min(calc(100% - 40px), var(--max)); }
   .site-header {
@@ -1404,6 +1462,10 @@ h1 strong {
   }
   .nav__links .nav__drawer-cta { display: none; }
   .site-header .nav__cta { display: inline-flex; }
+}
+
+@media (min-width: 900px) {
+  .container { width: min(calc(100% - 40px), var(--max)); }
   .hero__actions,
   .contact__actions {
     flex-direction: row;
