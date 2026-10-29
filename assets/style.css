@@ -90,7 +90,6 @@ body > * {
 .interactive-glow:focus-within::after { opacity: 1; }
 html[data-effects="off"] .ascii-ocean-background { opacity: 0; }
 html[data-effects="off"] .interactive-glow::after { display: none; }
-.micro-magnetic { transition: translate .32s cubic-bezier(.22, 1, .36, 1), transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
 .micro-ripple {
   position: absolute;
   z-index: 0;

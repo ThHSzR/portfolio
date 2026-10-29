@@ -12,7 +12,7 @@
   const glowTargets = [...document.querySelectorAll(
     ".consultancy__services article, .skill-card, .credential--linked, .social-profile, .network-link, .profile-card"
   )];
-  const magneticTargets = [...document.querySelectorAll(".button")];
+  const buttons = [...document.querySelectorAll(".button")];
   const profileVisual = document.querySelector(".profile-card__visual");
 
   glowTargets.forEach((element) => {
@@ -25,16 +25,7 @@
     }, { passive: true });
   });
 
-  magneticTargets.forEach((button) => {
-    button.classList.add("micro-magnetic");
-    button.addEventListener("pointermove", (event) => {
-      if (!effectsEnabled || reduceMotion.matches || event.pointerType === "touch") return;
-      const rect = button.getBoundingClientRect();
-      const x = Math.max(-5, Math.min(5, (event.clientX - rect.left - rect.width / 2) * .09));
-      const y = Math.max(-4, Math.min(4, (event.clientY - rect.top - rect.height / 2) * .1));
-      button.style.translate = `${x}px ${y}px`;
-    }, { passive: true });
-    button.addEventListener("pointerleave", () => { button.style.translate = ""; });
+  buttons.forEach((button) => {
     button.addEventListener("pointerdown", (event) => {
       if (!effectsEnabled || reduceMotion.matches) return;
       const rect = button.getBoundingClientRect();
@@ -74,7 +65,6 @@
   window.addEventListener("portfolio-effects-change", (event) => {
     effectsEnabled = Boolean(event.detail?.enabled);
     if (!effectsEnabled) {
-      magneticTargets.forEach((button) => { button.style.translate = ""; });
       profileVisual?.style.removeProperty("--profile-x");
       profileVisual?.style.removeProperty("--profile-y");
     }
