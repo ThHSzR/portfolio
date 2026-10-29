@@ -31,7 +31,15 @@
   <link rel="icon" href="/assets/favicon.svg?v=2" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
   <link rel="preload" href="assets/profile-photo.webp" as="image" fetchpriority="high">
-  <link rel="stylesheet" href="assets/style.css?v=20260922">
+  <script>
+    try {
+      if (localStorage.getItem("portfolio-effects") === "off") document.documentElement.dataset.effects = "off";
+    } catch {}
+  </script>
+  <link rel="stylesheet" href="assets/style.css?v=20261028-motion">
+  <script defer src="assets/ascii-ocean.js?v=20261028c"></script>
+  <script defer src="assets/micro-interactions.js?v=20261028"></script>
+  <script defer src="assets/effects-toggle.js?v=20261028"></script>
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -42,6 +50,7 @@
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <canvas class="ascii-ocean-background" data-ascii-ocean aria-hidden="true"></canvas>
 
   <header class="site-header">
     <div class="container nav">
@@ -470,6 +479,12 @@
       <a href="#inicio">Voltar ao topo ↑</a>
     </div>
   </footer>
+  <button class="effects-toggle" type="button" data-effects-toggle aria-pressed="true" aria-label="Desligar animações decorativas" data-tooltip="Efeitos ligados">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="effects-toggle__spark" d="M12 2.8c.35 4.56 2.64 6.85 7.2 7.2-4.56.35-6.85 2.64-7.2 7.2-.35-4.56-2.64-6.85-7.2-7.2 4.56-.35 6.85-2.64 7.2-7.2Zm6.2 12.8c.14 1.82 1.06 2.74 2.88 2.88-1.82.14-2.74 1.06-2.88 2.88-.14-1.82-1.06-2.74-2.88-2.88 1.82-.14 2.74-1.06 2.88-2.88Z"/>
+      <path class="effects-toggle__slash" d="M4.5 4.5 19.5 19.5"/>
+    </svg>
+  </button>
   <script>
     (() => {
       const toggle = document.querySelector(".nav__toggle");
